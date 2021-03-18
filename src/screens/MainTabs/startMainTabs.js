@@ -2,7 +2,6 @@ import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-
 const startTabs = (props) => {
   Promise.all([
     Icon.getImageSource("map-outline", 30),
@@ -20,15 +19,18 @@ const startTabs = (props) => {
                 {
                   component: {
                     id: 'FindPlace_SCREEN',
-                    name: 'awesome-places.FindPlace'
+                    name: 'awesome-places.FindPlaceScreen'
                   }
                 }
               ],
-                options: {
-                  bottomTab: {
-                    icon: sources[0]
-                  }
+              options: {
+                bottomTab: {
+                  icon: sources[0],
+                  text: "FindPlace",
+                  color: "red",
+                  textColor: "red"
                 }
+              }
             }
           },
           {
@@ -38,13 +40,16 @@ const startTabs = (props) => {
                 {
                   component: {
                     id: 'SharePlace_SCREEN',
-                    name: 'awesome-places.SharePlace'
+                    name: 'awesome-places.SharePlaceScreen'
                   }
                 }
               ],
               options: {
                 bottomTab: {
-                  icon: sources[1]
+                  icon: sources[1],
+                  text: "SharePlace",
+                  color: "red",
+                  textColor: "red"
                 }
               }
             }

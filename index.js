@@ -1,19 +1,16 @@
-import { Navigation } from "react-native-navigation";
-import App from "./App";
+import React from 'react';
+import { AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import App from './App';
 
-Navigation.registerComponent('com.myApp.WelcomeScreen', () => App);
-Navigation.events().registerAppLaunchedListener(() => {
-   Navigation.setRoot({
-     root: {
-       stack: {
-         children: [
-           {
-             component: {
-               name: 'com.myApp.WelcomeScreen'
-             }
-           }
-         ]
-       }
-     }
-  });
-});
+import configureStore from "./src/store/configureStore";
+
+const cstore = configureStore();
+
+const RNRedux = () => (
+  <Provider store={cstore}>
+      <App />
+  </Provider>
+);
+
+AppRegistry.registerComponent('rncourse', () => RNRedux);

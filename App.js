@@ -1,14 +1,27 @@
+import React from 'react';
 import { Navigation } from "react-native-navigation";
+import Provider from 'react-redux';
 
 import AuthScreen from "./src/screens/Auth/Auth";
-import FindPlace from "./src/screens/FindPlace/FindPlace";
-import SharePlace from "./src/screens/SharePlace/SharePlace";
+import FindPlaceScreen from "./src/screens/FindPlace/FindPlace";
+import SharePlaceScreen from "./src/screens/SharePlace/SharePlace";
+import configureStore from "./src/store/configureStore";
+
+const store = configureStore();
 
 // Register Screens
-Navigation.registerComponent("awesome-places.AuthScreen", () => AuthScreen);
-Navigation.registerComponent("awesome-places.FindPlace", () => FindPlace);
-Navigation.registerComponent("awesome-places.SharePlace", () => SharePlace);
+Navigation.registerComponent('awesome-places.AuthScreen', () => () => 
+(
+  <Provider store={store}>
+    <AuthScreen/>
+  </Provider>
+), () => AuthScreen);
 
+
+
+Navigation.registerComponent("awesome-places.AuthScreen", () =>  AuthScreen);
+Navigation.registerComponent("awesome-places.SharePlaceScreen", () =>  SharePlaceScreen);
+Navigation.registerComponent("awesome-places.FindPlaceScreen", () =>  FindPlaceScreen);
 // Start a App
 Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.setRoot({
@@ -17,10 +30,15 @@ Navigation.events().registerAppLaunchedListener(async () => {
         children: [
           {
             component: {
-              name: 'awesome-places.AuthScreen'
+              name: 'awesome-places.AuthScreen',
             }
           }
-        ]
+        ],
+        options:{
+          topBar:{
+            title:{text:'LOGIN'}
+          }
+        }
       }
     }
   });
@@ -46,7 +64,7 @@ Navigation.events().registerAppLaunchedListener(async () => {
 //   modalClosedHandler = () => {
 //     this.props.onDeselectPlace();
 //   }
-  
+
 
 //   placeDeletedHandler = () => {
 //     this.props.onDeletePlace();
@@ -56,7 +74,7 @@ Navigation.events().registerAppLaunchedListener(async () => {
 //     this.props.onSelectPlace(key)
 //   }
 
-  
+
 
 //   render() {
 //     return (
