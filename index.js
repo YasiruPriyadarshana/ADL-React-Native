@@ -1,16 +1,20 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import { Provider } from 'react-redux';
+import  {Provider} from 'react-redux';
 import App from './App';
 
 import configureStore from "./src/store/configureStore";
 
-const cstore = configureStore();
+const store = configureStore();
 
-const RNRedux = () => (
-  <Provider store={cstore}>
-      <App />
-  </Provider>
-);
+class RNRedux extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    )
+  }
+}
 
 AppRegistry.registerComponent('rncourse', () => RNRedux);
