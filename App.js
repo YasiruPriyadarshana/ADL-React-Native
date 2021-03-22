@@ -1,4 +1,60 @@
-import React, { Component } from "react";
+import React from 'react';
+import { Navigation } from "react-native-navigation";
+import {Provider} from 'react-redux';
+
+import AuthScreen from "./src/screens/Auth/Auth";
+import FindPlaceScreen from "./src/screens/FindPlace/FindPlace";
+import SharePlaceScreen from "./src/screens/SharePlace/SharePlace";
+import PlaceDetailsScreen from "./src/screens/PlaceDetail/PlaceDetail";
+import configureStore from "./src/store/configureStore";
+const store = configureStore();
+
+// Register Screens
+Navigation.registerComponent('awesome-places.AuthScreen', () => (props) => 
+(
+  <Provider store={store}>
+     <AuthScreen {... props}/>
+  </Provider>
+));
+Navigation.registerComponent('awesome-places.SharePlaceScreen', () => (props) => 
+(
+  <Provider store={store}>
+     <SharePlaceScreen {... props}/>
+  </Provider>
+));
+Navigation.registerComponent('awesome-places.FindPlaceScreen', () => (props) => 
+(
+  <Provider store={store}>
+     <FindPlaceScreen {... props}/>
+  </Provider>
+));
+Navigation.registerComponent("awesome-places.PlaceDetailsScreen", () =>  PlaceDetailsScreen);
+// Navigation.registerComponent("awesome-places.AuthScreen", () =>  AuthScreen,store,Provider);
+// Navigation.registerComponent("awesome-places.SharePlaceScreen", () =>  SharePlaceScreen);
+// Navigation.registerComponent("awesome-places.FindPlaceScreen", () =>  FindPlaceScreen);
+// Start a App
+Navigation.events().registerAppLaunchedListener(async () => {
+  Navigation.setRoot({
+    root: {
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'awesome-places.AuthScreen',
+            }
+          }
+        ],
+        options:{
+          topBar:{
+            title:{text:'LOGIN'}
+          }
+        }
+      }
+    }
+  });
+});
+/*
+ import React, { Component } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { connect } from 'react-redux';
 
@@ -18,7 +74,7 @@ class App extends Component {
   modalClosedHandler = () => {
     this.props.onDeselectPlace();
   }
-  
+
 
   placeDeletedHandler = () => {
     this.props.onDeletePlace();
@@ -28,7 +84,7 @@ class App extends Component {
     this.props.onSelectPlace(key)
   }
 
-  
+
 
   render() {
     return (
@@ -72,44 +128,46 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 
 
-  // state = {
-  //   places: [],
-  //   selectedPlace: null
-  // };
+  state = {
+    places: [],
+    selectedPlace: null
+  };
 
-//add
-// this.setState(prevState => {
-//   return {
-//     places: prevState.places.concat({
-//       key: Math.random(),
-//       name: placeName,
-//       image: {
-//         uri: "https://cdn.wallpapersafari.com/37/14/quvyai.jpg"
-//       }
-//     })
-//   };
-// });
+add
+this.setState(prevState => {
+  return {
+    places: prevState.places.concat({
+      key: Math.random(),
+      name: placeName,
+      image: {
+        uri: "https://cdn.wallpapersafari.com/37/14/quvyai.jpg"
+      }
+    })
+  };
+});
 
-//delete
-// this.setState(prevState => {
-//   return {
-//     places: prevState.places.filter(place => {
-//       return place.key !== prevState.selectedPlace.key;
-//     }),
-//     selectedPlace: null
-//   };
-// });
+delete
+this.setState(prevState => {
+  return {
+    places: prevState.places.filter(place => {
+      return place.key !== prevState.selectedPlace.key;
+    }),
+    selectedPlace: null
+  };
+});
 
-//deselect
-// this.setState({
-//   selectedPlace: null
-// });
+deselect
+this.setState({
+  selectedPlace: null
+});
 
-//select
-// this.setState(prevState => {
-//   return {
-//     selectedPlace: prevState.places.find(place => {
-//       return place.key === key;
-//     })
-//   }
-// });
+select
+this.setState(prevState => {
+  return {
+    selectedPlace: prevState.places.find(place => {
+      return place.key === key;
+    })
+  }
+});
+
+*/
