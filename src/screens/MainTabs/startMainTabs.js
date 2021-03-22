@@ -6,65 +6,90 @@ const startTabs = () => {
   Promise.all([
     Icon.getImageSource("map-outline", 30),
     Icon.getImageSource("share-outline", 30),
+    Icon.getImageSource("menu-outline", 30),
   ]).then(sources => {
 
-    Navigation.push('Component1', {
-      bottomTabs: {
-        id: 'BOTTOM_TABS_LAYOUT',
-        children: [
-          {
-            stack: {
-              id: 'FindPlace_TAB',
-              children: [
-                {
-                  component: {
-                    id: 'FindPlace_SCREEN',
-                    name: 'awesome-places.FindPlaceScreen',
-                    text: "FindPlace"
-                  }
-                }
-              ],
-              options: {
-                bottomTab: {
-                  icon: sources[0],
-                  text: "FindPlace",
-                }
-              }
+    Navigation.setRoot({
+      root: {
+        sideMenu: {
+          left: {
+            component: {
+              name: 'awesome-places.SideDrawer',
             }
           },
-          {
-            stack: {
-              id: 'SharePlace_TAB',
+          center: {
+            bottomTabs: {
+              id: 'BOTTOM_TABS_LAYOUT',
               children: [
                 {
-                  component: {
-                    id: 'SharePlace_SCREEN',
-                    name: 'awesome-places.SharePlaceScreen',
-                    text: "SharePlace"
+                  stack: {
+                    id: 'FindPlace_TAB',
+                    children: [
+                      {
+                        component: {
+                          id: 'FindPlace_SCREEN',
+                          name: 'awesome-places.FindPlaceScreen'
+                        }
+                      }
+                    ],
+                    options: {
+                      bottomTab: {
+                        icon: sources[0],
+                        text: "FindPlace"
+                      },
+                      topBar: {
+                        title: { text: "FindPlace" },
+                        leftButtons: {
+                          id: 'sideMenu',
+                          icon: sources[2]
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  stack: {
+                    id: 'SharePlace_TAB',
+                    children: [
+                      {
+                        component: {
+                          id: 'SharePlace_SCREEN',
+                          name: 'awesome-places.SharePlaceScreen'
+                        }
+                      }
+                    ],
+                    options: {
+                      bottomTab: {
+                        icon: sources[1],
+                        text: "SharePlace"
+                      },
+                      topBar: {
+                        title: { text: "SharePlace" },
+                        leftButtons: {
+                          id: 'sideMenu',
+                          icon: sources[2]
+                        }
+                      }
+                    }
                   }
                 }
-              ],
-              options: {
-                bottomTab: {
-                  icon: sources[1],
-                  text: "SharePlace",
-                  
-                }
-              }
+              ]
             }
           }
-        ]
+        }
       }
     });
-  });
 
-  Navigation.setDefaultOptions({
-    bottomTab:{
-      selectedIconColor:"red",
-      selectedTextColor:"red",
-      textColor: "red",
-      iconColor: "red",
-    }
+    Navigation.setDefaultOptions({
+      bottomTab: {
+        selectedIconColor: "red",
+        selectedTextColor: "red",
+        textColor: "red",
+        iconColor: "red",
+      }
+    });
+
+
   });
 
 }
