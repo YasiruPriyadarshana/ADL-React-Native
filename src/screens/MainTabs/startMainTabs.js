@@ -11,73 +11,66 @@ const startTabs = () => {
 
     Navigation.setRoot({
       root: {
-        sideMenu: {
-          left: {
-            component: {
-              name: 'awesome-places.SideDrawer',
-            }
-          },
-          center: {
-            bottomTabs: {
-              id: 'BOTTOM_TABS_LAYOUT',
-              children: [
-                {
-                  stack: {
-                    id: 'FindPlace_TAB',
-                    children: [
-                      {
-                        component: {
-                          id: 'FindPlace_SCREEN',
-                          name: 'awesome-places.FindPlaceScreen'
-                        }
-                      }
-                    ],
-                    options: {
-                      bottomTab: {
-                        icon: sources[0],
-                        text: "FindPlace"
-                      },
-                      topBar: {
-                        title: { text: "FindPlace" },
-                        leftButtons: {
-                          id: 'sideMenu',
-                          icon: sources[2]
-                        }
-                      }
+        bottomTabs: {
+          id: 'BOTTOM_TABS_LAYOUT',
+          children: [
+            {
+              stack: {
+                id: 'FindPlace_TAB',
+                children: [
+                  {
+                    component: {
+                      id: 'FindPlace_SCREEN',
+                      name: 'awesome-places.FindPlaceScreen'
                     }
                   }
-                },
-                {
-                  stack: {
-                    id: 'SharePlace_TAB',
-                    children: [
-                      {
-                        component: {
-                          id: 'SharePlace_SCREEN',
-                          name: 'awesome-places.SharePlaceScreen'
-                        }
-                      }
-                    ],
-                    options: {
-                      bottomTab: {
-                        icon: sources[1],
-                        text: "SharePlace"
-                      },
-                      topBar: {
-                        title: { text: "SharePlace" },
-                        leftButtons: {
-                          id: 'sideMenu',
-                          icon: sources[2]
-                        }
-                      }
+                ],
+                options: {
+                  bottomTab: {
+                    icon: sources[0],
+                    text: "FindPlace"
+                  },
+                  topBar: {
+                    title: { text: "FindPlace" },
+                    leftButtons: {
+                      id: 'sideMenu',
+                      icon: sources[2]
                     }
                   }
                 }
-              ]
+              }
+            },
+            {
+              stack: {
+                id: 'SharePlace_TAB',
+                children: [
+                  {
+                    component: {
+                      id: 'SharePlace_SCREEN',
+                      name: 'awesome-places.SharePlaceScreen'
+                    }
+                  }
+                ],
+                options: {
+                  bottomTab: {
+                    icon: sources[1],
+                    text: "SharePlace"
+                  },
+                  topBar: {
+                    title: { text: "SharePlace" },
+                    leftButtons: {
+                      id: 'sideMenu',
+                      icon: sources[2]
+                    }
+                  }
+                }
+              }
             }
-          }
+          ]
         }
       }
+
+
     });
 
     Navigation.setDefaultOptions({

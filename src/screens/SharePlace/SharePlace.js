@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text, TextInput, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
@@ -32,7 +32,14 @@ class SharePlaceScreen extends Component {
     render() {
         return (
             <View>
-                <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+                <Text>Share a place with us</Text>
+                <View><Text>image preview!</Text></View>
+                <Button title="Pick Image"/>
+                <View><Text>Map</Text></View>
+                <Button title="Locate me"/>
+                <TextInput placeholder="Place Name"/>
+                <Button title="Share The Place"/>
+                
             </View>
         );
     }
