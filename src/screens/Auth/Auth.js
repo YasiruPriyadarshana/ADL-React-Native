@@ -18,9 +18,9 @@ class AuthScreen extends Component {
         return (
             <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
                 <View style={styles.root}>
-                    <MainText>
-                        <HeadingText>Please Log IN</HeadingText>
-                    </MainText>
+
+                    <HeadingText>Please Log IN</HeadingText>
+
                     <ButtonWithBackground color="#29aaf4" onPress={() => alert('Hello')}>Switch to Login</ButtonWithBackground>
                     <View style={styles.inputContainer}>
                         <DefaultInput placeholder="Your email Address" style={styles.input} />
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: "100%",
-        flex:1
+        flex: 1
     },
     inputContainer: {
         width: "80%"
