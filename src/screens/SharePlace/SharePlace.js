@@ -21,7 +21,7 @@ class SharePlaceScreen extends Component {
     }
     navigationButtonPressed({ buttonId }) {
         if (buttonId === 'sideMenu') {
-            Navigation.mergeOptions(this, {
+            Navigation.mergeOptions('SharePlace_TAB', {
                 sideMenu: {
                     left: {
                         visible: true
