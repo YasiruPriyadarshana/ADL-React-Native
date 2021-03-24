@@ -30,14 +30,14 @@ const startTabs = () => {
                     options: {
                       bottomTab: {
                         icon: sources[0],
-                        text: "FindPlace"
+                        text: "FindPlace",
+                        iconColor: "red",
+                        selectedIconColor: "red",
+                        selectedTextColor: "red"
                       },
                       topBar: {
                         title: { text: "FindPlace" },
-                        leftButtons: {
-                          id: 'sideMenu',
-                          icon: sources[2]
-                        }
+                        
                       }
                     }
                   }
@@ -56,14 +56,17 @@ const startTabs = () => {
                     options: {
                       bottomTab: {
                         icon: sources[1],
-                        text: "SharePlace"
+                        text: "SharePlace",
+                        iconColor: "red",
+                        selectedIconColor: "red",
+                        selectedTextColor: "red"
                       },
                       topBar: {
                         title: { text: "SharePlace" },
                         leftButtons: {
                           id: 'sideMenu',
-                          icon: sources[2]
-                        }
+                          icon: sources[2],
+                        },
                       }
                     }
                   }
@@ -81,15 +84,6 @@ const startTabs = () => {
       }
 
 
-    });
-
-    Navigation.setDefaultOptions({
-      bottomTab: {
-        selectedIconColor: "red",
-        selectedTextColor: "red",
-        textColor: "red",
-        iconColor: "red",
-      }
     });
 
 

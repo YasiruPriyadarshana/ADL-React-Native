@@ -5,19 +5,44 @@ import { Navigation } from 'react-native-navigation';
 
 import PlaceList from "../../components/PlaceList/PlaceList";
 
+
 class FindPlaceScreen extends Component {
+    constructor(props) {
+        super(props);
+        console.log(props.componentId);
+        Navigation.events().bindComponent(this);
+    }
+    navigationButtonPressed({ buttonId }) {
+        if (buttonId === 'sideMenu') {
+            Navigation.mergeOptions('FindPlace_TAB', {
+                sideMenu: {
+                    left: {
+                        visible: true
+                    }
+                }
+            });
+        }
+    }
+
+
     itemSelectedHandler = key => {
         const selPlace = this.props.places.find(place =>{
             return place.key === key;
         });
-        Navigation.push('FindPlace_TAB',{
+        Navigation.push('FindPlace_SCREEN',{
             component: {
                 name: 'awesome-places.PlaceDetailsScreen',
                 id: 'PlaceDetails_ID',
-                text:selPlace.name,
                 passProps: {
                     selectedPlace:selPlace
-                }
+                },
+                options: { 
+                    topBar: {
+                      title: {
+                        text: selPlace.name,
+                      }
+                    }
+                  }
               },
         });
     }
