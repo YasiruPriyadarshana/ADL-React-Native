@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import DefaultInput from "../UI/DefaultInput/DefaultInput"
 
-PlaceInput = props => (
+const PlaceInput = props => (
 
     <DefaultInput
         placeholder="Place Name"

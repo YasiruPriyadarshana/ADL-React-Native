@@ -36,9 +36,9 @@ Navigation.registerComponent('awesome-places.PlaceDetailsScreen', () => (props) 
   </Provider>
 ));
 Navigation.registerComponent("awesome-places.SideDrawer", () =>  SideDrawer);
-// Navigation.registerComponent("awesome-places.AuthScreen", () =>  AuthScreen,store,Provider);
-// Navigation.registerComponent("awesome-places.SharePlaceScreen", () =>  SharePlaceScreen);
-// Navigation.registerComponent("awesome-places.FindPlaceScreen", () =>  FindPlaceScreen);
+
+
+
 // Start a App
 Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.setRoot({

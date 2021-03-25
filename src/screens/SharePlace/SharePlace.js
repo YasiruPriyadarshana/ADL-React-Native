@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet, Image } from 'react-native';
+import { View, Button, ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
@@ -21,7 +21,7 @@ class SharePlaceScreen extends Component {
     }
     navigationButtonPressed({ buttonId }) {
         if (buttonId === 'sideMenu') {
-            Navigation.mergeOptions(this, {
+            Navigation.mergeOptions('SharePlace_TAB', {
                 sideMenu: {
                     left: {
                         visible: true
@@ -44,17 +44,19 @@ class SharePlaceScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <MainText><HeadingText>Share a place with us</HeadingText></MainText>
-                <PickImage />
-                <PickLocation />
-                <PlaceInput
-                    placeName={this.state.placeName}
-                    onChangeText={this.placeNameChangedHandler} />
-                <View style={styles.button}>
-                    <Button title="Share The Place" onPress={this.placeAddedHandler}/>
+            <ScrollView>
+                <View style={styles.container}>
+                    <MainText><HeadingText>Share a place with us</HeadingText></MainText>
+                    <PickImage />
+                    <PickLocation />
+                    <PlaceInput
+                        placeName={this.state.placeName}
+                        onChangeText={this.placeNameChangedHandler} />
+                    <View style={styles.button}>
+                        <Button title="Share The Place" onPress={this.placeAddedHandler} />
+                    </View>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 
