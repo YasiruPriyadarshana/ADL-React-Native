@@ -15,7 +15,8 @@ const reducer = (state = initialState, action) => {
                     name: action.placeName,
                     image: {
                         uri: "https://cdn.wallpapersafari.com/37/14/quvyai.jpg"
-                    }
+                    },
+                    location:action.location
                 })
             };
         case DELETE_PLACE:

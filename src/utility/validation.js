@@ -11,6 +11,9 @@ const validate = (val, rules, connectedValue) => {
             case 'equalTo':
                 isValid = isValid && euqalToValidator(val, connectedValue[rule]);
                 break;
+            case "notEmpty":
+                isValid = isValid && notEmptyValidator(val);
+                break;
             default:
                 isValid = true;
         }
@@ -32,5 +35,8 @@ const euqalToValidator = (val, checkValue) => {
     return val === checkValue
 };
 
+const notEmptyValidator = val => {
+    return val.trim() !== "";
+};
 
 export default validate;
