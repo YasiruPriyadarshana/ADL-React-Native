@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
@@ -18,10 +19,24 @@ class PlaceDetail extends Component {
             <View style={styles.container}>
                 <View>
                     <Image source={this.props.selectedPlace.image} style={styles.placeImage} />
-                    <Text style={styles.palceName}>{this.props.selectedPlace.name}</Text>
-                </View>
-                <View>
+                    <MapView
+                        initialRegion={{
+                            ...this.props.selectedPlace.location,
+                            latitudeDelta: 0.0122,
+                            longitudeDelta:
+                                Dimensions.get("window").width /
+                                Dimensions.get("window").height *
+                                0.0122
+                        }}
+                        style={styles.map}
+                    >
+                        <MapView.Marker coordinate={this.props.selectedPlace.location} />
+                    </MapView>
 
+                    
+                </View>
+                <View >
+                <Text style={styles.palceName}>{this.props.selectedPlace.name}</Text>
                     <TouchableOpacity onPress={this.placeDeletedHandler}>
                         <View style={styles.deleteButton}>
                             <Icon size={30} name="ios-trash" color="red" />
@@ -50,7 +65,12 @@ const styles = StyleSheet.create({
     },
     deleteButton: {
         alignItems: "center"
-    }
+    },
+    map: {
+        width: "100%",
+        height: 250,
+        marginTop:5
+    },
 });
 
 const mapDispatchToProps = dispatch => {
